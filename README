@@ -11,7 +11,7 @@ A simple Shoes movie downloader, player, manager...
 
 == FEATURES:
 
-GUI
+GUI usage
 
 1) Provide a movie URL in "Url:", i.e:
 http://whytheluckystiff.net/o..e/adventure_time.flv
