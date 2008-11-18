@@ -16,13 +16,21 @@ GUI usage
 1) Provide a movie URL in "Url:", i.e:
 http://whytheluckystiff.net/o..e/adventure_time.flv
 (which is the default. Better another URL)
+
 2) Provide in "Name to save:" the movie's name to save.
+
 2a) Providing a name of a local movie in "Name to save:" without a download URL serve to play it.
+
 3) Click the "Download" button. The movie shows only after a bit of download (clicking play before, of course).
+
 3a) A progress represent the download progress.
+
 3b) A status shows the download phases.
+
 4) When playing, a progress represent the movie time.
+
 4a) A time status represente the seconds elapsed.
+
 5) A "Controls" bar allow to play, pause, stop, hide, show blahblah.
 
 == VISION:
@@ -31,7 +39,7 @@ http://whytheluckystiff.net/o..e/adventure_time.flv
 
 == INSTALL
 
-Install Shoes
+Install Shoes:
 
 http://shoooes.net/downloads
 
