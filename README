@@ -39,7 +39,13 @@ or
 
 http://github.com/why/shoes/tree/master
 
-Start knowing bout Shoes
+Add shoes to your PATH
+
+By now, just use:
+
+$ shoes shoevie.rb
+
+Start knowing about Shoes
 
 http://github.com/why/shoes/wikis
 http://shoooes.net/
