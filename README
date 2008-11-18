@@ -41,7 +41,7 @@ http://github.com/why/shoes/tree/master
 
 Add shoes to your PATH
 
-By now, just use:
+Until now, just use:
 
 $ shoes shoevie.rb
 
