@@ -10,9 +10,12 @@ Shoes.app :title => 'Shoe_vie v.0.0.1', :width => 450, :height => 600, :resizabl
 	@rect = rect(0, 0, 448, 255, 10)
 	@vid = nil
 
+	@downloading = false
+	
+
 	stack :margin => 4 do
 		
-		stack do
+		@download_stack = stack do
 			flow do
 				@rect = rect(0, 0, 400, 20, 10)
 				para "Url:\t"
@@ -28,9 +31,40 @@ Shoes.app :title => 'Shoe_vie v.0.0.1', :width => 450, :height => 600, :resizabl
 				@rect.height = @file_name_save.style[:height] + 10
 			end
 			@button_download = button "Download"
-			@button_download.click  {download_movie}
+			@button_download.click  {download_movie; !@downloading}
 			
+			@status_download_stack = stack do
+				flow do
+					@status_head = para "Status: "
+					@status = para
+				end
+				
+				flow do
+					@rect = rect(0, 0, 400, 20, 10)
+					@progress_download = para  "Progress\t"
+					@progress_download.left = 20
+					@p_download = progress :width => 200, :height => 20, :top => 5
+					@rect.left = @p_download.left
+					@rect.top = @p_download.top
+					@rect.height = @p_download.style[:height] + 10
+				end
+			end
+			@status_download_stack_para = para 'Downloads Status ',
+				#link("hide")  { @status_download_stack.hide if @downloading == false; @downloading = !@downloading;@para.text = @downloading }, ", ",
+				#link("show")  { @status_download_stack.show if @downloading == true; @downloading = !@downloading;@para.text = @downloading }
+				link("hide")  { @downloading = !@downloading;@para.text = @downloading; hide_download_stack }, ", ",
+				link("show")  { @downloading = !@downloading;@para.text = @downloading; hide_download_stack }
 		end
+		
+		def hide_download_stack
+			@downloading == false ? @status_download_stack.style (:hidden => true) : @status_download_stack.style (:hidden => false)
+		end
+		
+		@para = para @downloading
+		
+		@download_para = para 'Downloads ',
+			link("hide")  { @download_stack.hide }, ", ",
+			link("show")  { @download_stack.show }
 
 		@time = para
 		
@@ -44,20 +78,9 @@ Shoes.app :title => 'Shoe_vie v.0.0.1', :width => 450, :height => 600, :resizabl
 			@rect.height = @p_time.style[:height] + 10
 		end
 		
-		flow do
-			@rect = rect(0, 0, 400, 20, 10)
-			@progress_download = para  "Download progress\t"
-			@progress_download.left = 20
-			@p_download = progress :width => 200, :height => 20, :top => 5
-			@rect.left = @p_download.left
-			@rect.top = @p_download.top
-			@rect.height = @p_download.style[:height] + 10
-		end
+		
 
-		flow do
-			@status_head = para "Status download: "
-			@status = para
-		end
+		
 
 		@time_ellapsed =
 			animate do |i|
@@ -98,5 +121,10 @@ Shoes.app :title => 'Shoe_vie v.0.0.1', :width => 450, :height => 600, :resizabl
 				:error => proc { |dl, err| @status.text = "Error: #{err}" }
 	end
 			
+
 	#@vid = video @file_name_to_save if !@file_name_to_save.nil?
+	def initalize
+		hide_download_stack
+	end
+	
 end
