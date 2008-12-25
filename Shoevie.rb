@@ -1,4 +1,4 @@
-Shoes.app( :title => 'Shoe_vie v.0.0.1', :width => 450, :height => 600, :resizable => true, :margin => 20 ) do
+Shoes.app( :title => 'Shoe_vie v.0.0.1a', :width => 450, :height => 600, :resizable => true, :margin => 20 ) do
 
 	background "#343".."#eee"
 	stroke rgb(0.5, 0.5, 0.7)
